@@ -1,0 +1,5 @@
+# Real Observation Data for Asteroid
+# Format YYYY-MM-DDThh:mm:ss, RA_string, Dec_string
+2023-10-20T00:00:00, 23h11m37.96s, -05d11m18.61s
+2023-11-10T00:00:00, 23h11m04.55s, -06d38m41.53s
+2023-12-05T00:00:00, 23h22m54.73s, -06d38m43.47s

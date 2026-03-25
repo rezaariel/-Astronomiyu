@@ -1,0 +1,20 @@
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# PyInstaller Specific
+/build/
+/dist/
+*.spec
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS Specific
+.DS_Store
+Thumbs.db
