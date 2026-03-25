@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Astronomiyu 🌌
 
 **Astronomiyu** is a modern, modular desktop application serving as a central hub for celestial mechanics and astrodynamics. Built in Python with a sleek, dark-themed `customtkinter` interface, it brings complex astronomical computations elegantly to your desktop!
@@ -35,3 +36,7 @@ To run Astronomiyu from source:
    ```bash
    python astronomiyu.py
    ```
+=======
+# -Astronomiyu
+full Astronomy AI Project 
+>>>>>>> 662940497fd2eb5570d62b2c5001f92826465642
