@@ -6,6 +6,9 @@ import sys
 # Clean absolute package imports routing into src architecture
 from src.tools.gauss_orbit import run_gauss, get_resource_path
 from src.tools.realtime_coords import open_coordinate_tracker
+from src.tools.obs_planner import open_obs_planner
+from src.tools.iss_tracker import open_iss_tracker
+from src.tools.skymap import open_skymap
 
 class AstronomiyuApp(ctk.CTk):
     """
@@ -17,7 +20,7 @@ class AstronomiyuApp(ctk.CTk):
 
         # Setup Window
         self.title("Astronomiyu")
-        self.geometry("500x450")
+        self.geometry("500x650")
         
         # Configure Custom Window Icon
         try:
@@ -28,10 +31,8 @@ class AstronomiyuApp(ctk.CTk):
         
         # Configure Grid Layout
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=1)
-        self.grid_rowconfigure(3, weight=1)
+        for i in range(7):
+            self.grid_rowconfigure(i, weight=1)
 
         # Title Label
         self.title_label = ctk.CTkLabel(
@@ -64,16 +65,37 @@ class AstronomiyuApp(ctk.CTk):
         self.coords_button = ctk.CTkButton(
             self, 
             text="Real-Time Celestial Tracker", 
-            command=self.launch_tracker,
-            width=250,
-            height=50,
-            font=ctk.CTkFont(size=16)
+            command=lambda: open_coordinate_tracker(self),
+            width=250, height=50, font=ctk.CTkFont(size=16)
         )
-        self.coords_button.grid(row=3, column=0, padx=20, pady=(0, 40))
+        self.coords_button.grid(row=3, column=0, padx=20, pady=(0, 20))
 
-    def launch_tracker(self) -> None:
-        """Launches the Real-Time Celestial Coordinate Tracker sub-program."""
-        open_coordinate_tracker(self)
+        # Observation Planner Button
+        self.obs_button = ctk.CTkButton(
+            self, 
+            text="Daily Observation Planner", 
+            command=lambda: open_obs_planner(self),
+            width=250, height=50, font=ctk.CTkFont(size=16)
+        )
+        self.obs_button.grid(row=4, column=0, padx=20, pady=(0, 20))
+
+        # Sky Map Button
+        self.skymap_button = ctk.CTkButton(
+            self, 
+            text="Interactive Sky Map", 
+            command=lambda: open_skymap(self),
+            width=250, height=50, font=ctk.CTkFont(size=16)
+        )
+        self.skymap_button.grid(row=5, column=0, padx=20, pady=(0, 20))
+
+        # ISS Tracker Button
+        self.iss_button = ctk.CTkButton(
+            self, 
+            text="Real-Time ISS Tracker", 
+            command=lambda: open_iss_tracker(self),
+            width=250, height=50, font=ctk.CTkFont(size=16)
+        )
+        self.iss_button.grid(row=6, column=0, padx=20, pady=(0, 40))
 
     def launch_gauss(self) -> None:
         """Opens a file dialog and launches the Gauss Orbit Determination module."""
