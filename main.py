@@ -4,7 +4,7 @@ import os
 import sys
 
 # Clean absolute package imports routing into src architecture
-from src.tools.gauss_orbit import run_gauss
+from src.tools.gauss_orbit import run_gauss, get_resource_path
 from src.tools.realtime_coords import open_coordinate_tracker
 
 class AstronomiyuApp(ctk.CTk):
@@ -18,6 +18,13 @@ class AstronomiyuApp(ctk.CTk):
         # Setup Window
         self.title("Astronomiyu")
         self.geometry("500x450")
+        
+        # Configure Custom Window Icon
+        try:
+            icon_path = get_resource_path(os.path.join("data", "icon.ico"))
+            self.iconbitmap(icon_path)
+        except Exception as e:
+            print(f"Warning: Could not load application icon ({e})")
         
         # Configure Grid Layout
         self.grid_columnconfigure(0, weight=1)
